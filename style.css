@@ -1,0 +1,118 @@
+@font-face {
+    font-family: 'Helvetica';
+    src: url('fonts/Helveticasinav.ttf');
+}
+
+html,body {
+    font-family: 'Helvetica', sans-serif;
+    min-width: 250px;
+    padding: 5px;
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.col-md-5 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #000; /* İnce sınır çizgisi */
+    border-radius: 10px;
+
+}
+
+#fenceCanvas {
+    border: 1px solid #000;
+    border-radius: 10px;
+}
+
+#solutionSteps {
+    margin-top: 20px;
+    padding: 10px;
+    border: 1px solid #4CAF50;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+.modal-dialog {
+    max-width: 600px;
+}
+
+.dialog-ipucu-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.dialog-ipucu-box {
+    background: white;
+    padding: 20px;
+    border-radius: 5px;
+    max-width: 500px;
+    width: 100%;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.dialog-ipucu-title-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-bottom: 15px;
+    position: relative;
+}
+
+.dialog-ipucu-title {
+    font-size: 30px;
+    font-weight: bold;
+    margin-left: 10px; /* Başlık ile resim arasına mesafe koyar */
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+}
+
+.dialog-ipucu-content {
+    text-align:justify; /* İçerik yazısını sola yasla */
+    margin-bottom: 20px;
+}
+
+.dialog-ipucu-buttons {
+    display: flex;
+    justify-content: center;
+}
+
+.dialog-ipucu-buttons button {
+    padding: 10px 20px;
+    font-size: 14px;
+    cursor: pointer;
+    border: none;
+    border-radius: 3px;
+}
+
+.close-ipucu-button {
+    background-color: #2196F3;
+    color: white;
+    margin: 5px;
+    padding: 10px 20px;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 10px;
+    width: 150px;
+}

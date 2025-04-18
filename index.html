@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Çit Maliyeti Hesaplama</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="icon" href="icons/favicon.ico" type="image/x-icon">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
+
+    <script type="text/javascript" id="MathJax-script" async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3.0.0/es5/tex-svg.js">
+    </script> 
+   
+</head>
+<body oncontextmenu="return false;" >
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <h3>Çit Maliyeti Hesaplama</h3>
+                <p>Kare şeklindeki bir arsanın çevresini çitle çevirmek için maliyeti hesaplayınız.</p>
+                <form id="costForm">
+                    <div class="form-group">
+                        <label for="acreAmount">Arsa miktarı (Dönüm):</label>
+                        <input type="number" class="form-control" id="acreAmount" name="acreAmount" style="margin-bottom: 20px" required >
+                        <label for="fenceCost">Metre başına çit maliyeti (₺):</label>
+                        <input type="number" class="form-control" id="fenceCost" name="fenceCost" required>
+                    </div>
+                    <button type="button" class="btn btn-primary" id="calculateButton" onclick="calculateCost()" disabled>Hesapla</button>
+                    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#solutionModal" onclick=playSound()>Nasıl Çözülür?</button>
+                </form>
+
+                <div id="solutionSteps" style="display: none;">
+                    <h4>Çözüm Adımları</h4>
+                    <ol>
+                        <li id="step1"></li>
+                        <li id="step2"></li>
+                        <li id="step3"></li>
+                        <li id="step4"></li>
+                    </ol>
+                </div>
+            </div>
+            <div class="col-md-5">
+                <h4>Arsa Modeli</h4>
+                <canvas id="fenceCanvas" class="img-fluid"></canvas>
+                <p id="acreInfo" style="text-align: center; margin-top: 10px;"></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="solutionModal" tabindex="-1" aria-labelledby="solutionModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="solutionModalLabel">NASIL ÇÖZÜLÜR?</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Çit maliyeti hesaplama adımları:</p>
+                    <ol>
+                        <li>Arsanın 1 dönüm (1000 m²) ve kare şeklinde olduğunu varsayalım. (Bu kısım arsanın kaç dönüm olduğuna dair sunulan giriş bölümünden alınan veriye göre değişiklik arz edecektir.)</li>
+                        <br>
+                        <li>Kare şeklinde bir arsanın bir kenarının uzunluğunu hesaplarız: $$\sqrt{1000} \approx 31,62 \text{ metre}$$</li>
+                        <li>Kare şeklinde bir arsanın çevresini hesaplarız: $$4 \times 31,62 \approx 126,48 \text{ metre}$$</li>
+                        <li>Metre başına çit maliyeti giriş bölümünden alınan veriye göre toplam çit maliyetini şu formülle hesaplarız: $$\text{Toplam Çit Maliyeti} = \text{Çevre} \times \text{Metre Başına Çit Maliyeti}$$</li>
+                    </ol>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick=playSound()>Kapat</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Ses dosyası -->
+    <audio id="click" src="mp3/click.mp3"></audio>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.0/es5/tex-mml-chtml.js"></script>
+
+    <script src="main.js"></script>
+
+</body>
+</html>
